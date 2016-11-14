@@ -23,10 +23,8 @@ with tf.name_scope("similarity"):
 	label = tf.to_float(label)
 margin = 0.2
 
-#with tf.variable_scope("model"):
 left_output = mynet(left, reuse=False)
 
-#with tf.variable_scope("model", reuse=True):
 right_output = mynet(right, reuse=True)
 
 loss = contrastive_loss(left_output, right_output, label, margin)
@@ -64,8 +62,9 @@ with tf.Session() as sess:
 		writer.add_summary(summary_str, i)
 		print "\r#%d - Loss"%i, l
 
-		#generate test
+		
 		if (i + 1) % FLAGS.step == 0:
+			#generate test
 			feat = sess.run(left_output, feed_dict={left:test_im})
 			
 			labels = mnist.test.labels
@@ -78,7 +77,7 @@ with tf.Session() as sess:
 			plt.savefig('result.jpg')
 			plt.savefig('img/%d.jpg' % (i + 1))
 
-	saver.save(sess, "train.log/model.ckpt")
+	saver.save(sess, "model.ckpt")
 
 
 
