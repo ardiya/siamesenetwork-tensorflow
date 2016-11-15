@@ -77,7 +77,7 @@ with tf.Session() as sess:
 			plt.savefig('result.jpg')
 			plt.savefig('img/%d.jpg' % (i + 1))
 
-	saver.save(sess, "model.ckpt")
+	saver.save(sess, "model/model.ckpt")
 
 
 
