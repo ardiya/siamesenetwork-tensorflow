@@ -29,8 +29,13 @@ Result on MNIST Dataset:
 See folder [img](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/img "img") to see the process until it converge, it is really fun to watch :)
 
 ## Image retrieval
-Image retrieval uses the trained model to extract the features and get the most similar image using cosine similarity. [See here](https://github.com/ardiya/siamesenetwork-tensorflow/blob/master/Similar%20image%20retrieval.ipynb "See here")
-#### random image from test data
+Image retrieval uses the trained model to extract the features and get the most similar image using cosine similarity.
+[See here](https://github.com/ardiya/siamesenetwork-tensorflow/blob/master/Similar%20image%20retrieval.ipynb "See here")
+
+#### Random image from test data
+e.g id 865 in test image
 ![](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/figure/random-test.png)
-#### retrieved image from train data
+
+#### Retrieved top n similar image from train data
+e.g. return id [53144 47864 11074 51561 41350 34215 48182] from train data
 ![](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/figure/retrieve-from-train.png)
