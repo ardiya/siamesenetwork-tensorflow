@@ -5,23 +5,32 @@ This project follows Hadsell-et-al.'06 [1] by computing the Euclidean distance o
 
 [1] "Dimensionality Reduction by Learning an Invariant Mapping"
     http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf
+
 ## Model
-![](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/tensorboard-graph.png)
+![](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/figure/tensorboard-graph.png)
+The input of these will be image_left, image_right and .
 Our model uses 5 layer of convolutional layer and pooling followed. We do not use fully convolutonal net because convolution operation is faster on GPU(especially using CUDNN). See http://cs231n.github.io/convolutional-networks/#convert for more information on converting FC layer to Conv layer.
 
-## Dimensionality reduction
-Result on MNIST Dataset:
-![](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/result.jpg)
-See folder img to see the process until it converge, it is really fun to watch :)
-## Image retrieval
-TODO: create .ipynb file
 ## Run
 Train the model
 ```bash
 git clone https://github.com/ardiya/siamesenetwork-tensorflow
 python train.py
 ```
+
 Tensorboard Visualization(After training)
 ```bash
 tensorboard --logdir=train.log
 ```
+
+## Dimensionality reduction
+Result on MNIST Dataset:
+![](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/figure/result.jpg)
+See folder [img](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/img "img") to see the process until it converge, it is really fun to watch :)
+
+## Image retrieval
+Image retrieval uses the trained model to extract the features and get the most similar image using cosine similarity. [See here](https://github.com/ardiya/siamesenetwork-tensorflow/blob/master/Similar%20image%20retrieval.ipynb "See here")
+#### random image from test data
+![](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/figure/random-test.png)
+#### retrieved image from train data
+![](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/figure/retrieve-from-train.png)
