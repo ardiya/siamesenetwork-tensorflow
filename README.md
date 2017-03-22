@@ -1,4 +1,5 @@
 #Siamese Network Tensorflow
+
 Siamese network is a neural network that contain two or more identical subnetwork. The purpose of this network is to find the similarity or comparing the relationship between two comparable things. Unlike classification task that uses cross entropy as the loss function, siamese network usually uses contrastive loss or triplet loss.
 
 This project follows Hadsell-et-al.'06 [1] by computing the Euclidean distance on the output of the shared network and by optimizing the contrastive loss (see paper for more details).
