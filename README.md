@@ -23,6 +23,10 @@ Tensorboard Visualization(After training)
 tensorboard --logdir=train.log
 ```
 
+## Updates
+- Update the API to 1.0
+- Model provided is from iter-5000, the images below are trained until iter-50k 
+
 ## Dimensionality reduction
 Result on MNIST Dataset:
 ![](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/figure/result.jpg)
@@ -30,12 +34,12 @@ See folder [img](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/
 
 ## Image retrieval
 Image retrieval uses the trained model to extract the features and get the most similar image using cosine similarity.
-[See here](https://github.com/ardiya/siamesenetwork-tensorflow/blob/master/Similar%20image%20retrieval.ipynb "See here")
+[See here](https://github.com/ardiya/siamesenetwork-tensorflow/blob/master/Similar%20image%20retrieval.ipynb "See the code here")
 
-#### Random image from test data
-e.g id 865 in test image
+#### Retrieving similar test image from trainset
+- Select id 865 in test image
 ![](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/figure/random-test.png)
 
-#### Retrieved top n similar image from train data
-e.g. return id [53144 47864 11074 51561 41350 34215 48182] from train data
+- Retrieved top n similar image from train data
+with ids of [53144 47864 11074 51561 41350 34215 48182] from train data
 ![](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/figure/retrieve-from-train.png)

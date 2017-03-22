@@ -2,6 +2,7 @@
 *.UBUNTU-PC
 *.pyc
 MNIST_data/*
+.ipynb_checkpoints/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -7,7 +7,7 @@ from dataset import BatchGenerator, get_mnist
 from model import *
 
 flags.DEFINE_integer('batch_size', 100, 'Batch size.')
-flags.DEFINE_integer('train_iter', 50000, 'Total training iter')
+flags.DEFINE_integer('train_iter', 5000, 'Total training iter')
 flags.DEFINE_integer('step', 500, 'Save after ... iteration')
 
 mnist = get_mnist()
@@ -42,15 +42,15 @@ train_step = tf.train.MomentumOptimizer(0.01, 0.99, use_nesterov=True).minimize(
 
 saver = tf.train.Saver()
 with tf.Session() as sess:
-	sess.run(tf.initialize_all_variables())
+	sess.run(tf.global_variables_initializer())
 
 	#setup tensorboard	
-	tf.scalar_summary('step', global_step)
-	tf.scalar_summary('loss', loss)
+	tf.summary.scalar('step', global_step)
+	tf.summary.scalar('loss', loss)
 	for var in tf.trainable_variables():
-		tf.histogram_summary(var.op.name, var)
-	merged = tf.merge_all_summaries()
-	writer = tf.train.SummaryWriter('train.log', sess.graph)
+		tf.summary.histogram(var.op.name, var)
+	merged = tf.summary.merge_all()
+	writer = tf.summary.FileWriter('train.log', sess.graph)
 
 	#train iter
 	for i in range(FLAGS.train_iter):
@@ -74,7 +74,6 @@ with tf.Session() as sess:
 			    plt.plot(feat[labels==j, 0].flatten(), feat[labels==j, 1].flatten(),
 			    	'.', c=c[j],alpha=0.8)
 			plt.legend(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
-			plt.savefig('result.jpg')
 			plt.savefig('img/%d.jpg' % (i + 1))
 
 	saver.save(sess, "model/model.ckpt")
