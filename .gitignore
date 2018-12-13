@@ -3,6 +3,9 @@
 *.pyc
 MNIST_data/*
 .ipynb_checkpoints/*
+.vscode/*
+data/
+img/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

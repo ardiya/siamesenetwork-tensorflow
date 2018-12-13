@@ -1,3 +1,5 @@
+from __future__ import generators, division, absolute_import, with_statement, print_function, unicode_literals
+
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,7 +8,7 @@ import tensorflow.contrib.slim as slim
 flags = tf.app.flags
 FLAGS = flags.FLAGS
 
-def mynet(input, reuse=False):
+def mnist_model(input, reuse=False):
 	with tf.name_scope("model"):
 		with tf.variable_scope("conv1") as scope:
 			net = tf.contrib.layers.conv2d(input, 32, [7, 7], activation_fn=tf.nn.relu, padding='SAME',
@@ -40,7 +42,7 @@ def mynet(input, reuse=False):
 
 def contrastive_loss(model1, model2, y, margin):
 	with tf.name_scope("contrastive-loss"):
-		d = tf.sqrt(tf.reduce_sum(tf.pow(model1-model2, 2), 1, keep_dims=True))
-		tmp= y * tf.square(d)    
-		tmp2 = (1 - y) * tf.square(tf.maximum((margin - d),0))
-		return tf.reduce_mean(tmp + tmp2) /2
+		distance = tf.sqrt(tf.reduce_sum(tf.pow(model1 - model2, 2), 1, keepdims=True))
+		similarity = y * tf.square(distance)                                           # keep the similar label (1) close to each other
+		dissimilarity = (1 - y) * tf.square(tf.maximum((margin - distance), 0))        # give penalty to dissimilar label if the distance is bigger than margin
+		return tf.reduce_mean(dissimilarity + similarity) / 2
