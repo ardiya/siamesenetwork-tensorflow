@@ -6,7 +6,7 @@ Siamese network has a lot of function, this repository is trying to use Siamese 
 
 This project follows Hadsell-et-al.'06 [1] by computing the Euclidean distance on the output of the shared network and by optimizing the contrastive loss (see paper for more details). The contastive loss is defined as follows
 
-<img src="https://latex.codecogs.com/gif.latex?\begin{align}L_{contrastive} &= L_{similarity}+L_{dissimilarity} \notag\\ &= \frac{1}{2}(Y)(D)^2+\frac{1}{2}(1-Y)(max(0,m-D))^2 \notag \end{align}"  alt="-contrastive loss function-"/> 
+<img src="https://latex.codecogs.com/gif.latex?\begin{align}&space;L_{contrastive}&space;&=&space;L_{similarity}&plus;L_{dissimilarity}&space;\notag&space;\\&space;&=&space;\frac{1}{2}(Y)(D)^2&plus;\frac{1}{2}(1-Y)(max(0,m-D))^2&space;\notag&space;\end{align}" title="\begin{align} L_{contrastive} &= L_{similarity}+L_{dissimilarity} \notag \\ &= \frac{1}{2}(Y)(D)^2+\frac{1}{2}(1-Y)(max(0,m-D))^2 \notag \end{align}" alt="-contrastive loss function-"/>
 
 The <img src="https://latex.codecogs.com/gif.latex?D=\sqrt{(N(x_{left}-x_{right}))2}"  alt="-D formula-" /> is the distance of between the output of the network <img src="https://latex.codecogs.com/gif.latex?N"  alt="N" /> with the input <img src="https://latex.codecogs.com/gif.latex?x_{left}"  alt="Xleft" /> and the input <img src="https://latex.codecogs.com/gif.latex?x_{right}"  alt="Xright" />. 
 
@@ -43,7 +43,7 @@ The images below shows the final Result on MNIST test dataset. By only using 2 f
 ![](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/figure/result.jpg)
 
 The gif below shows some animation until it somehow converges.
-![](https://github.com/ardiya/siamesenetwork-tensorflow/raw/master/figure/mifig.gif)
+![](https://raw.githubusercontent.com/ardiya/siamesenetwork-tensorflow/master/figure/myfig.gif)
 
 ## Image retrieval
 Image retrieval uses the trained model to extract the features and get the most similar image using cosine similarity.
